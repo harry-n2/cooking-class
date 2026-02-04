@@ -627,6 +627,30 @@ section {
     }
 }
 
+/* App Embed */
+.app-embed-section {
+    padding: 50px 0 20px;
+    background: #fff;
+}
+
+.app-embed-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.app-embed-iframe {
+    width: 480px;
+    height: 900px;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .app-embed-iframe {
+        width: 100%;
+    }
+}
+
 /* Animation */
 .shimmer {
     position: relative;
