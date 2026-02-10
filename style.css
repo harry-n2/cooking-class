@@ -627,6 +627,40 @@ section {
     }
 }
 
+/* Promo Video */
+.promo-video-section {
+    padding: 60px 0;
+    background: #f8f5f2;
+}
+
+.promo-video-section .video-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 45%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+}
+
+.promo-video-section .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .promo-video-section {
+        padding: 40px 0;
+    }
+
+    .promo-video-section .video-container {
+        padding-bottom: 56.25%;
+    }
+}
+
 /* App Embed */
 .app-embed-section {
     padding: 50px 0 20px;
