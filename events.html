@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント情報 | 4毒抜き料理教室</title>
+    <meta name="description" content="4毒抜き料理研究会の実践会・料理教室イベント情報。東京都内で開催する実践型料理イベントへのご参加をお待ちしています。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Shippori+Mincho:wght@400;600&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Events Page Specific Styles */
+        .events-hero {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, #1a3a5c 100%);
+            padding: 160px 20px 80px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .events-hero .hero-sub {
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            font-family: var(--font-serif);
+            margin-bottom: 16px;
+        }
+
+        .events-hero h1 {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .events-hero p {
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Events List Section */
+        .events-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .events-grid {
+            display: grid;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border-left: 6px solid var(--accent-gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-card-header {
+            background: linear-gradient(135deg, var(--accent-dark), #1a3a5c);
+            color: #fff;
+            padding: 28px 36px;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--accent-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .event-card-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .event-card-body {
+            padding: 36px;
+        }
+
+        .event-info-list {
+            margin-bottom: 32px;
+        }
+
+        .event-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .event-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-info-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 0.1em;
+            min-width: 80px;
+            padding-top: 2px;
+            white-space: nowrap;
+        }
+
+        .event-info-value {
+            font-size: 1rem;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .event-info-value strong {
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+
+        .event-note {
+            background: #fdf9f0;
+            border: 1px solid var(--accent-gold-light);
+            border-radius: 6px;
+            padding: 16px 20px;
+            font-size: 0.9rem;
+            color: #6b5a2e;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .event-note::before {
+            content: "📝 ";
+        }
+
+        .event-cta {
+            text-align: center;
+        }
+
+        .btn-register {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), #b08d45);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 16px 48px;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(197, 160, 89, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(197, 160, 89, 0.55);
+            color: #fff;
+        }
+
+        .btn-coming-soon {
+            display: inline-block;
+            background: #e0e0e0;
+            color: #888;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 16px 48px;
+            border-radius: 50px;
+            cursor: default;
+            letter-spacing: 0.05em;
+        }
+
+        /* Back link */
+        .back-link-bar {
+            background: var(--accent-dark);
+            padding: 14px 20px;
+            text-align: center;
+        }
+
+        .back-link-bar a {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.2s;
+        }
+
+        .back-link-bar a:hover {
+            opacity: 0.75;
+        }
+
+        /* Footer */
+        .events-footer {
+            background: var(--accent-dark);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Past Events Section */
+        .past-events-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .event-card.past {
+            border-left-color: #aaa;
+            opacity: 0.85;
+        }
+
+        .event-card.past .event-card-header {
+            background: linear-gradient(135deg, #444, #666);
+        }
+
+        .event-badge.past-badge {
+            background: #aaa;
+            color: #fff;
+        }
+
+        .btn-past-report {
+            display: inline-block;
+            background: transparent;
+            color: #888;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 40px;
+            border-radius: 50px;
+            border: 2px solid #ccc;
+            letter-spacing: 0.05em;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-past-report:hover {
+            border-color: #999;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .events-hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .event-card-header {
+                padding: 22px 22px;
+            }
+
+            .event-card-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .event-card-body {
+                padding: 24px 22px;
+            }
+
+            .event-info-label {
+                min-width: 70px;
+                font-size: 0.78rem;
+            }
+
+            .btn-register,
+            .btn-coming-soon {
+                font-size: 0.95rem;
+                padding: 14px 28px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo">美容ダイエット料理教室</div>
+        <nav>
+            <a href="index.html" class="nav-btn">← トップへ戻る</a>
+        </nav>
+    </header>
+
+    <!-- Events Hero -->
+    <section class="events-hero">
+        <p class="hero-sub">Event Information</p>
+        <h1>4毒抜き 料理研究会<br>実践イベント情報</h1>
+        <p>体の内側から変わる食事法を、実際に作りながら体験できる実践会です。</p>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2 class="section-title text-center">
+                <span class="en">Upcoming Events</span>
+                <span class="jp">開催予定イベント</span>
+            </h2>
+
+            <div class="events-grid">
+
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-card-header">
+                        <span class="event-badge">受付中</span>
+                        <h2>4毒抜き 料理研究会<br>料理を作る実践会！♬</h2>
+                    </div>
+                    <div class="event-card-body">
+                        <ul class="event-info-list">
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催日時</span>
+                                <span class="event-info-value">
+                                    <strong>2026年3月28日(土)</strong><br>
+                                    16:00〜18:00
+                                </span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">集合時刻</span>
+                                <span class="event-info-value">15:55</span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">申込締切</span>
+                                <span class="event-info-value">3月28日(土) 09:00 まで</span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催場所</span>
+                                <span class="event-info-value">
+                                    <strong>セシオン杉並</strong><br>
+                                    東京都
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="event-note">
+                            申込締切までにお申し込みください。定員になり次第、締め切りとなる場合があります。
+                        </div>
+                        <div class="event-cta">
+                            <a href="https://tunagate.com/circle/210836/events/505820/invite_code/4290RL/1z3e1oNl"
+                                class="btn-register" target="_blank" rel="noopener noreferrer">
+                                イベントに申し込む →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-card-header">
+                        <span class="event-badge">開催予定</span>
+                        <h2>4毒抜き料理教室<br>_260425</h2>
+                    </div>
+                    <div class="event-card-body">
+                        <ul class="event-info-list">
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催日時</span>
+                                <span class="event-info-value">
+                                    <strong>2026年4月25日(土)</strong><br>
+                                    17:30〜21:30
+                                </span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催場所</span>
+                                <span class="event-info-value">
+                                    <strong>としま産業振興プラザ イケビズ</strong><br>
+                                    料理実習室
+                                </span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">定員</span>
+                                <span class="event-info-value">11名</span>
+                            </li>
+                        </ul>
+                        <div class="event-note">
+                            申込受付は近日公開予定です。公開次第、このページにてご案内いたします。
+                        </div>
+                        <div class="event-cta">
+                            <span class="btn-coming-soon">申込受付 準備中</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Section -->
+    <section class="past-events-section">
+        <div class="container">
+            <h2 class="section-title text-center">
+                <span class="en">Past Events</span>
+                <span class="jp">開催実績</span>
+            </h2>
+
+            <div class="events-grid">
+
+                <!-- Past Event 1 -->
+                <div class="event-card past">
+                    <div class="event-card-header">
+                        <span class="event-badge past-badge">開催済み</span>
+                        <h2>4毒抜き 料理研究会<br>料理を作る実践会！♬</h2>
+                    </div>
+                    <div class="event-card-body">
+                        <ul class="event-info-list">
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催日時</span>
+                                <span class="event-info-value">
+                                    <strong>2026年1月4日(日)</strong><br>
+                                    14:00〜16:20
+                                </span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">集合時刻</span>
+                                <span class="event-info-value">13:55</span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">申込締切</span>
+                                <span class="event-info-value">1月3日(土) 19:00</span>
+                            </li>
+                            <li class="event-info-item">
+                                <span class="event-info-label">開催場所</span>
+                                <span class="event-info-value">
+                                    <strong>池袋</strong><br>
+                                    東京都
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="event-cta">
+                            <a href="https://tunagate.com/circle/210836/events/469835/invite_code/4290RL/1z3e1oNl"
+                                class="btn-past-report" target="_blank" rel="noopener noreferrer">
+                                イベント詳細を見る →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <div class="back-link-bar">
+        <a href="index.html">← トップページへ戻る</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="events-footer">
+        <p>&copy; 2026 4毒抜き 美容ダイエット料理教室. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
